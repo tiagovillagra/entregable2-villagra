@@ -1,46 +1,48 @@
-const productos = [
-    { nombre: "Remera", precio: 1000 },
-    { nombre: "Jean", precio: 2000 },
-    { nombre: "Buzo", precio: 1500 }
-];
+let carrito = [];
+let total = 0;
 
-function mostrarMenu() {
-    let menu = "¿Qué deseas comprar? (elige la opción correspondiente)\n";
-    
-    
-    for (let i = 0; i < productos.length; i++) {
-        menu += `${i + 1}. ${productos[i].nombre} - $${productos[i].precio}\n`;
-    }
-    menu += `${productos.length + 1}. Salir`;  
-    let seleccion = prompt(menu);
-    
-    return parseInt(seleccion);
+
+function agregarAlCarrito(producto, precio) {
+    carrito.push({ producto, precio });
+    actualizarCarrito();
 }
 
-function confirmarCompra(producto, precio) {
-    let confirmacion = confirm(`Has seleccionado ${producto} con un precio de $${precio}. ¿Deseas confirmar tu compra?`);
-    if (confirmacion) {
-        alert(`Gracias por tu compra de un/a ${producto}!`);
-    } else {
-        alert("No se ha realizado la compra.");
-    }
+
+function eliminarDelCarrito(index) {
+    carrito.splice(index, 1); 
+    actualizarCarrito();
 }
 
-function tienda() {
-    let seleccion = mostrarMenu();
-    
-    if (isNaN(seleccion) || seleccion < 1 || seleccion > productos.length + 1) {
-        alert("Selección no válida. Por favor, intenta de nuevo.");
-        tienda();  
-    } else if (seleccion === productos.length + 1) {
-        alert("Gracias por visitar nuestra tienda. ¡Hasta la próxima!");
-        return;  
-    } else {
-        let productoSeleccionado = productos[seleccion - 1];
-        confirmarCompra(productoSeleccionado.nombre, productoSeleccionado.precio);
-    }
+
+function actualizarCarrito() {
+    const listaCarrito = document.getElementById('lista-carrito');
+    const totalElement = document.getElementById('total');
+    listaCarrito.innerHTML = '';
+    total = 0;
+
+    carrito.forEach((item, index) => {
+        const li = document.createElement('li');
+        li.textContent = `${item.producto} - $${item.precio}`;
+        
+        
+        const btnEliminar = document.createElement('button');
+        btnEliminar.textContent = 'Eliminar';
+        btnEliminar.onclick = () => eliminarDelCarrito(index); 
+        li.appendChild(btnEliminar);
+
+        listaCarrito.appendChild(li);
+        total += item.precio;
+    });
+
+    totalElement.textContent = total;
 }
 
-tienda();
+
+function finalizarCompra() {
+    alert('Gracias por tu compra. Total a pagar: $' + total);
+    carrito = [];
+    actualizarCarrito();
+}
+
 
 

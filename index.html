@@ -3,14 +3,46 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=h1, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- JS -->
     <script defer src="./js/main.js"></script>
+    <link rel="stylesheet" href="./css/styles.css">
     <title>Ayzus</title>
 </head>
 
 <body>
-    <h1>Tiago Villagra</h1>
+    <header>
+        <h1>Ayzus</h1>
+
+    </header>
+
+    <section id="productos">
+
+        <div class="producto">
+            <h2>Remera over</h2>
+            <p>Precio: $1000</p>
+            <button onclick="agregarAlCarrito('Remera Básica', 1000)">Agregar al carrito</button>
+        </div>
+        <div class="producto">
+            <h2>Pantalón mom</h2>
+            <p>Precio: $1500</p>
+            <button onclick="agregarAlCarrito('Pantalón Clásico', 1500)">Agregar al carrito</button>
+        </div>
+        <div class="producto">
+            <h2>Buzo over</h2>
+            <p>Precio: $1200</p>
+            <button onclick="agregarAlCarrito('Buzo Deportivo', 1200)">Agregar al carrito</button>
+        </div>
+    </section>
+
+    <section id="carrito">
+        <h2>Carrito de Compras</h2>
+        <ul id="lista-carrito">
+
+        </ul>
+        <p>Total: $<span id="total">0</span></p>
+        <button onclick="finalizarCompra()">Finalizar Compra</button>
+    </section>
 </body>
 
 </html>
