@@ -1,42 +1,42 @@
 const productos = [
     {
         id: 1,
-        nombre: "televisor",
-        precio: 5000
+        prenda: "bermuda",
+        precio: 26000
     },
     {
         id: 2,
-        nombre: "lavarropas",
-        precio: 8000
+        prenda: "buzo over",
+        precio: 50000
     },
     {
         id: 3,
-        nombre: "microondas",
-        precio: 2000
+        prenda: "pantalon moom",
+        precio: 45000
     },
     {
         id: 4,
-        nombre: "secadora",
-        precio: 4000
+        prenda: "remera over",
+        precio: 20000
     },
     {
         id: 5,
-        nombre: "cocina",
-        precio: 13000
+        prenda: "chomba",
+        precio: 19000
     },
 ]
 
 let cartProducts = []
 
-let productsContainer = document.getElementById("products-container")
+let stockropa = document.getElementById("stock-ropa")
 
 function renderProductos(productsArray) {
     productsArray.forEach(producto => {
         const card = document.createElement("div")
-        card.innerHTML = `<h3>${producto.nombre}</h3>
+        card.innerHTML = `<h3>${producto.prenda}</h3>
                 <p>${producto.precio}</p>
                 <button class="productoAgregar" id="${producto.id}">Agregar</button>`
-        productsContainer.appendChild(card)
+        stockropa.appendChild(card)
     })
     addToCartButton()
 }
