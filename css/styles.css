@@ -12,50 +12,25 @@ header {
     text-align: center;
 }
 
-nav ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-nav ul li {
-    display: inline;
-    margin: 0 1rem;
-}
-
-nav ul li a {
-    color: white;
-    text-decoration: none;
-}
-
-#productos {
-    display: flex;
-    justify-content: space-around;
-    padding: 2rem;
-}
-
-.producto {
-    background-color: white;
-    padding: 1rem;
-    border: 1px solid #ddd;
-    width: 30%;
-    text-align: center;
-}
-
-#carrito {
-    padding: 2rem;
-    text-align: center;
-    background-color: #fff;
-    margin-top: 2rem;
-}
-
-button {
-    background-color: #333;
-    color: white;
-    padding: 0.5rem 1rem;
+.botonindex {
+    text-decoration: underline;
+    background-color: #4CAF50;
     border: none;
+    color: white;
+    padding: 15px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    margin: 10px;
     cursor: pointer;
+    border-radius: 12px;
+    transition: all 0.3s ease;
 }
 
-button:hover {
-    background-color: #555;
+.botonindex:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }

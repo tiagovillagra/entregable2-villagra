@@ -1,48 +1,58 @@
-let carrito = [];
-let total = 0;
+const productos = [
+    {
+        id: 1,
+        nombre: "televisor",
+        precio: 5000
+    },
+    {
+        id: 2,
+        nombre: "lavarropas",
+        precio: 8000
+    },
+    {
+        id: 3,
+        nombre: "microondas",
+        precio: 2000
+    },
+    {
+        id: 4,
+        nombre: "secadora",
+        precio: 4000
+    },
+    {
+        id: 5,
+        nombre: "cocina",
+        precio: 13000
+    },
+]
 
+let cartProducts = []
 
-function agregarAlCarrito(producto, precio) {
-    carrito.push({ producto, precio });
-    actualizarCarrito();
+let productsContainer = document.getElementById("products-container")
+
+function renderProductos(productsArray) {
+    productsArray.forEach(producto => {
+        const card = document.createElement("div")
+        card.innerHTML = `<h3>${producto.nombre}</h3>
+                <p>${producto.precio}</p>
+                <button class="productoAgregar" id="${producto.id}">Agregar</button>`
+        productsContainer.appendChild(card)
+    })
+    addToCartButton()
 }
 
+renderProductos(productos)
 
-function eliminarDelCarrito(index) {
-    carrito.splice(index, 1); 
-    actualizarCarrito();
+function addToCartButton() {
+    addButton = document.querySelectorAll(".productoAgregar")
+    addButton.forEach(button => {
+        button.onclick = (e) => {
+            const productId = e.currentTarget.id
+            const selectedProduct = productos.find(producto => producto.id == productId)
+            cartProducts.push(selectedProduct)
+            console.log(cartProducts)
+
+            localStorage.setItem("cartProducts", JSON.stringify(cartProducts))
+        }
+    })
 }
-
-
-function actualizarCarrito() {
-    const listaCarrito = document.getElementById('lista-carrito');
-    const totalElement = document.getElementById('total');
-    listaCarrito.innerHTML = '';
-    total = 0;
-
-    carrito.forEach((item, index) => {
-        const li = document.createElement('li');
-        li.textContent = `${item.producto} - $${item.precio}`;
-        
-        
-        const btnEliminar = document.createElement('button');
-        btnEliminar.textContent = 'Eliminar';
-        btnEliminar.onclick = () => eliminarDelCarrito(index); 
-        li.appendChild(btnEliminar);
-
-        listaCarrito.appendChild(li);
-        total += item.precio;
-    });
-
-    totalElement.textContent = total;
-}
-
-
-function finalizarCompra() {
-    alert('Gracias por tu compra. Total a pagar: $' + total);
-    carrito = [];
-    actualizarCarrito();
-}
-
-
-
