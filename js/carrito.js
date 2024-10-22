@@ -51,7 +51,7 @@ const finalizarCompraBtn = document.createElement("button");
 finalizarCompraBtn.textContent = "Finalizar compra";
 finalizarCompraBtn.classList.add("finalizar-compra-btn");
 cartContainer.appendChild(finalizarCompraBtn);
-finalizarCompraBtn.style.marginTop = "20px"; 
+// finalizarCompraBtn.style.marginTop = "20px"; 
 
 finalizarCompraBtn.addEventListener("click", finalizarCompra);
 function finalizarCompra() {
