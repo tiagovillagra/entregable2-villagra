@@ -56,3 +56,4 @@ function addToCartButton() {
         }
     })
 }
+JSON.parse(localStorage.getItem("cartProductos")) || []

@@ -47,3 +47,21 @@ if (cartStorage.length > 0) {
     cartContainer.innerHTML = "<p>no hay productos en el carrito</p>";
     totalContainer.innerHTML = ""; 
 }
+const finalizarCompraBtn = document.createElement("button");
+finalizarCompraBtn.textContent = "Finalizar compra";
+finalizarCompraBtn.classList.add("finalizar-compra-btn");
+cartContainer.appendChild(finalizarCompraBtn);
+finalizarCompraBtn.style.marginTop = "20px"; 
+
+finalizarCompraBtn.addEventListener("click", finalizarCompra);
+function finalizarCompra() {
+    if (cartStorage.length > 0) {
+        alert("¡Gracias por tu compra en Ayzus! Esperamos que disfrutes de tu nueva prenda. ¡Te esperamos pronto!");
+        cartStorage = [];
+        localStorage.setItem("cartProducts", JSON.stringify(cartStorage));
+        renderCarrito(cartStorage);
+        totalContainer.innerHTML = ""; 
+    } else {
+        alert("El carrito está vacío.");
+    }
+}
