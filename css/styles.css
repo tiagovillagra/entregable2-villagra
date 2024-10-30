@@ -38,3 +38,18 @@ button {
 button:hover {
     background-color: #555;
 }
+.botoncarrito{
+    position: relative;
+    top: 20px;
+    background-color: black;
+    color: white;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    cursor: pointer;
+}
+.botoncarrito:hover{
+    background-color: white;
+    color: black;
+    
+}
+
