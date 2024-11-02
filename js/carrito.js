@@ -5,10 +5,10 @@ let cartStorage = localStorage.getItem("cartProducts");
 cartStorage = JSON.parse(cartStorage) || [];
 
 function renderCarrito(cartItems) {
-    cartContainer.innerHTML = ""; 
+    cartContainer.innerHTML = "";
     cartItems.forEach((producto, index) => {
         const card = document.createElement("div");
-        card.classList.add("cart-item"); // Clase para estilo adicional
+        card.classList.add("cart-item");
         card.innerHTML = `
             <img src="${producto.img}" alt="${producto.prenda}" class="cart-item-img">
             <h3>${producto.prenda}</h3>
@@ -24,20 +24,20 @@ function renderCarrito(cartItems) {
 
     calcularTotal(cartItems);
 
-    // Asegúrate de que el botón de finalizar compra esté presente después de renderizar el carrito
+
     if (cartItems.length > 0) {
         agregarBotonFinalizarCompra();
     }
 }
 
 function agregarBotonFinalizarCompra() {
-    // Verifica si ya existe el botón para evitar duplicados
+
     const existingButton = document.querySelector(".finalizar-compra-btn");
     if (!existingButton) {
         const finalizarCompraBtn = document.createElement("button");
         finalizarCompraBtn.textContent = "Finalizar compra";
         finalizarCompraBtn.classList.add("finalizar-compra-btn");
-        finalizarCompraBtn.style.marginTop = "20px"; 
+        finalizarCompraBtn.style.marginTop = "20px";
         cartContainer.appendChild(finalizarCompraBtn);
 
         finalizarCompraBtn.addEventListener("click", finalizarCompra);
@@ -48,9 +48,9 @@ function removeProduct(event) {
     const productIndex = event.target.getAttribute("data-index");
     const confirmRemove = confirm("¿Estás seguro de que deseas eliminar este producto del carrito?");
     if (confirmRemove) {
-        cartStorage.splice(productIndex, 1); 
-        localStorage.setItem("cartProducts", JSON.stringify(cartStorage)); 
-        renderCarrito(cartStorage); 
+        cartStorage.splice(productIndex, 1);
+        localStorage.setItem("cartProducts", JSON.stringify(cartStorage));
+        renderCarrito(cartStorage);
     }
 }
 
@@ -67,7 +67,7 @@ if (cartStorage.length > 0) {
     renderCarrito(cartStorage);
 } else {
     cartContainer.innerHTML = "<p>No hay productos en el carrito.</p>";
-    totalContainer.innerHTML = ""; 
+    totalContainer.innerHTML = "";
 }
 
 function finalizarCompra() {
@@ -76,7 +76,7 @@ function finalizarCompra() {
         cartStorage = [];
         localStorage.setItem("cartProducts", JSON.stringify(cartStorage));
         renderCarrito(cartStorage);
-        totalContainer.innerHTML = ""; 
+        totalContainer.innerHTML = "";
     } else {
         alert("El carrito está vacío.");
     }
