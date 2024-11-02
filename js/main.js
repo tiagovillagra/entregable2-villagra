@@ -1,41 +1,87 @@
 const productos = [
     {
         id: 1,
-        prenda: "bermuda",
-        precio: 26000
+        prenda: "remera",
+        precio: 26000,
+        img: "../img/remereraej1.jpeg"
     },
     {
         id: 2,
-        prenda: "buzo over",
-        precio: 50000
+        prenda: "remera",
+        precio: 26000,
+        img: "../img/remeraej2.jpeg"
     },
     {
         id: 3,
-        prenda: "pantalon moom",
-        precio: 45000
+        prenda: "remera",
+        precio: 26000,
+        img: "../img/remeraej3.jpeg"
     },
     {
         id: 4,
-        prenda: "remera over",
-        precio: 20000
+        prenda: "buzo",
+        precio: 120000,
+        img: "../img/buzoej1.jpeg"
     },
     {
         id: 5,
-        prenda: "chomba",
-        precio: 19000
+        prenda: "buzo",
+        precio: 120000,
+        img: "../img/buzoej2.jpeg"
     },
+    {
+        id: 6,
+        prenda: "buzo",
+        precio: 120000,
+        img: "../img/buzoej3.jpeg"
+    },
+    {
+        id: 7,
+        prenda: "pantalón cargo",
+        precio: 70000,
+        img: "../img/pantaloncargo.jpg"
+    },
+    {
+        id: 8,
+        prenda: "pantalon moom",
+        precio: 58000,
+        img: "../img/pantalonmoom.webp"
+    },
+    {
+        id: 9,
+        prenda: "bermuda de jean",
+        precio: 38000,
+        img: "../img/bermudadejean.jpg"
+    },
+    {
+        id: 10,
+        prenda: "bermuda cargo",
+        precio: 40000,
+        img: "../img/bermudacargo.jpg"
+    },
+    {
+        id: 11,
+        prenda: "bermuda moom",
+        precio: 30000,
+        img: "../img/bermudamoom.jpg"
+    }
 ]
 
-let cartProducts = []
+let cartProducts = JSON.parse(localStorage.getItem("cartProducts")) || []
 
 let stockropa = document.getElementById("stock-ropa")
 
 function renderProductos(productsArray) {
     productsArray.forEach(producto => {
         const card = document.createElement("div")
-        card.innerHTML = `<h3>${producto.prenda}</h3>
-                <p>${producto.precio}</p>
-                <button class="productoAgregar" id="${producto.id}">Agregar</button>`
+        card.classList.add("product-card") 
+
+        card.innerHTML = `
+            <img src="${producto.img}" alt="${producto.prenda}" class="product-img">
+            <h3>${producto.prenda}</h3>
+            <p>Precio: $${producto.precio}</p>
+            <button class="productoAgregar" id="${producto.id}">Agregar</button>
+        `
         stockropa.appendChild(card)
     })
     addToCartButton()
@@ -44,7 +90,7 @@ function renderProductos(productsArray) {
 renderProductos(productos)
 
 function addToCartButton() {
-    addButton = document.querySelectorAll(".productoAgregar")
+    const addButton = document.querySelectorAll(".productoAgregar")
     addButton.forEach(button => {
         button.onclick = (e) => {
             const productId = e.currentTarget.id
@@ -56,4 +102,3 @@ function addToCartButton() {
         }
     })
 }
-JSON.parse(localStorage.getItem("cartProductos")) || []
