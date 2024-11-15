@@ -31,27 +31,50 @@ function renderCarrito(cartItems) {
 }
 
 function agregarBotonFinalizarCompra() {
-
     const existingButton = document.querySelector(".finalizar-compra-btn");
+
+
     if (!existingButton) {
         const finalizarCompraBtn = document.createElement("button");
         finalizarCompraBtn.textContent = "Finalizar compra";
         finalizarCompraBtn.classList.add("finalizar-compra-btn");
         finalizarCompraBtn.style.marginTop = "20px";
+
+
         cartContainer.appendChild(finalizarCompraBtn);
+
 
         finalizarCompraBtn.addEventListener("click", finalizarCompra);
     }
+
+
 }
+
+
 
 function removeProduct(event) {
     const productIndex = event.target.getAttribute("data-index");
-    const confirmRemove = confirm("¿Estás seguro de que deseas eliminar este producto del carrito?");
-    if (confirmRemove) {
-        cartStorage.splice(productIndex, 1);
-        localStorage.setItem("cartProducts", JSON.stringify(cartStorage));
-        renderCarrito(cartStorage);
-    }
+
+    Swal.fire({
+        title: "¿Desea borrar este producto?",
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: "Borrar",
+        denyButtonText: "No borrar"
+    }).then((result) => {
+        if (result.isConfirmed) {
+
+            cartStorage.splice(productIndex, 1);
+            localStorage.setItem("cartProducts", JSON.stringify(cartStorage));
+            renderCarrito(cartStorage);
+
+
+            Swal.fire("¡Producto eliminado!", "", "success");
+        } else if (result.isDenied) {
+
+            Swal.fire("El producto no ha sido eliminado", "", "info");
+        }
+    });
 }
 
 function calcularTotal(cartItems) {
@@ -72,12 +95,17 @@ if (cartStorage.length > 0) {
 
 function finalizarCompra() {
     if (cartStorage.length > 0) {
-        alert("¡Gracias por tu compra en Ayzus! Esperamos que disfrutes de tu nueva prenda. ¡Te esperamos pronto!");
+        Swal.fire("¡Gracias por tu compra en Ayzus! Esperamos que disfrutes de tu nueva prenda. ¡Te esperamos pronto!");
         cartStorage = [];
         localStorage.setItem("cartProducts", JSON.stringify(cartStorage));
         renderCarrito(cartStorage);
         totalContainer.innerHTML = "";
     } else {
-        alert("El carrito está vacío.");
+        Swal.fire({
+            icon: "error",
+            title: "Ups...",
+            text: "No hay productos en el carrito!",
+            footer: '<a href="/index.html">Cargar productos al carrito</a>'
+        });
     }
 }

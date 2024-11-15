@@ -1,0 +1,68 @@
+[
+    {
+        "id": 1,
+        "prenda": "remera",
+        "precio": 26000,
+        "img": "../img/remereraej1.jpeg"
+    },
+    {
+        "id": 2,
+        "prenda": "remera",
+        "precio": 26000,
+        "img": "../img/remeraej2.jpeg"
+    },
+    {
+        "id": 3,
+        "prenda": "remera",
+        "precio": 26000,
+        "img": "../img/remeraej3.jpeg"
+    },
+    {
+        "id": 4,
+        "prenda": "buzo",
+        "precio": 120000,
+        "img": "../img/buzoej1.jpeg"
+    },
+    {
+        "id": 5,
+        "prenda": "buzo",
+        "precio": 120000,
+        "img": "../img/buzoej2.jpeg"
+    },
+    {
+        "id": 6,
+        "prenda": "buzo",
+        "precio": 120000,
+        "img": "../img/buzoej3.jpeg"
+    },
+    {
+        "id": 7,
+        "prenda": "pantalón cargo",
+        "precio": 70000,
+        "img": "../img/pantaloncargo.jpg"
+    },
+    {
+        "id": 8,
+        "prenda": "pantalón moom",
+        "precio": 58000,
+        "img": "../img/pantalonmoom.webp"
+    },
+    {
+        "id": 9,
+        "prenda": "bermuda de jean",
+        "precio": 38000,
+        "img": "../img/bermudadejean.jpg"
+    },
+    {
+        "id": 10,
+        "prenda": "bermuda cargo",
+        "precio": 40000,
+        "img": "../img/bermudacargo.jpg"
+    },
+    {
+        "id": 11,
+        "prenda": "bermuda moom",
+        "precio": 30000,
+        "img": "../img/bermudamoom.jpg"
+    }
+]
