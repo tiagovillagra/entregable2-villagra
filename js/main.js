@@ -141,7 +141,7 @@ function addToCartButton() {
     addButton.forEach(button => {
         button.onclick = (e) => {
             const productId = e.currentTarget.id;
-            fetch('/js/productos.json') 
+            fetch('https://tiagovillagra.github.io/entregable2-villagra/js/productos.json') 
                 .then(response => response.json())
                 .then(productos => {
                     const selectedProduct = productos.find(producto => producto.id == productId);
