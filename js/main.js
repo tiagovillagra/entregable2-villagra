@@ -108,7 +108,7 @@ let stockropa = document.getElementById("stock-ropa");
 
 async function fetchProductos() {
     try {
-        const response = await fetch("/js/productos.json"); 
+        const response = await fetch("https://tiagovillagra.github.io/entregable2-villagra/js/productos.json"); 
         if (!response.ok) throw new Error('Error al cargar los productos');
         const productos = await response.json();
         renderProductos(productos);
